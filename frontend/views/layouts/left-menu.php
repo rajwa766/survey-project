@@ -41,11 +41,15 @@ AppAsset::register($this);
        $menuItems = [
            ['label' => 'Home', 'url' => ['/site/index']],
            ['label' => 'Roles', 'url' => ['/admin']],
+           ['label' => 'Design Info', 'url' => ['/design-info/index']],
+           ['label' => 'Country Details', 'url' => ['/site/country-detail']],
+           
          //  ['label' => 'Contact', 'url' => ['/site/contact']],
        ];
    }else{
        $menuItems = [
            ['label' => 'Home', 'url' => ['/site/index']],
+           ['label' => 'Country Details', 'url' => ['/site/country-detail']],
           // ['label' => 'Roles', 'url' => ['/admin']],
          //  ['label' => 'Contact', 'url' => ['/site/contact']],
        ];

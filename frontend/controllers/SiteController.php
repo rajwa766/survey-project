@@ -72,9 +72,14 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $data = \common\models\DesignInfo::find()->all();
+        return $this->render('index',['data'=>$data]);
     }
-
+    public function actionCountryDetail()
+    {
+        $data = \common\models\DesignInfo::find()->all();
+        return $this->render('index',['data'=>$data]);
+    }
     /**
      * Logs in a user.
      *

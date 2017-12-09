@@ -126,6 +126,53 @@ LOCK TABLES `auth_rule` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `design_info`
+--
+
+DROP TABLE IF EXISTS `design_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `design_info` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `country` varchar(255) NOT NULL,
+  `hague` int(5) NOT NULL,
+  `maxterm` int(5) NOT NULL,
+  `renewals` varchar(255) NOT NULL,
+  `renewals_details` text NOT NULL,
+  `grace` varchar(255) NOT NULL,
+  `grace_details` text NOT NULL,
+  `max_no` int(5) NOT NULL,
+  `what` varchar(255) NOT NULL,
+  `what_details` text NOT NULL,
+  `subst_exam` int(5) NOT NULL,
+  `fees` text NOT NULL,
+  `misc` varchar(255) NOT NULL,
+  `misc_details` text NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `claim` varchar(255) NOT NULL,
+  `req_docs` varchar(255) NOT NULL,
+  `req_docs_details` text NOT NULL,
+  `deferment_period` varchar(255) NOT NULL,
+  `reprod` varchar(255) NOT NULL,
+  `reprod_details` text NOT NULL,
+  `dashed` int(5) NOT NULL,
+  `shading` int(5) NOT NULL,
+  `sections` int(5) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `design_info`
+--
+
+LOCK TABLES `design_info` WRITE;
+/*!40000 ALTER TABLE `design_info` DISABLE KEYS */;
+INSERT INTO `design_info` VALUES (1,'WIPO',1,25,'Every 5 years','','6','',100,'No restrictions','',0,'Initial registration, renewals, and potential actions such as change of address.','','An international registration may not be refused on grounds of non-compliance with formal requirement, since such requirements must be considered satisfied following the examination carried out bt the International Bureau.\r\nThe conditions which regulate the applicable period of deferment in any given situation depend upon the laws of the various national or regional systems of the Contracting Parties designated in the international application, including the case of Contracting Parties which do not permit deferred publication at all.','Only if a contracting party requires it.','Only if a contracting party requires it.','Power of attorney. Other, depending in the contracting party.','','30','Both photographs and drawings are allowed. It is recommended to provide reproductions based on the requirements of the contracting parties.','',1,1,1),(2,'US',1,15,'0','','12','',1,'A design for an article of manufacture that is dictated primarily by the function of the article lacks ornamentality and is not proper statutory subject matter \r\n\r\nA design that simulates a well-known or naturally occurring object or person is not origina','',1,'Only registration fees. If via WIPO, the registration fees will be paid in two installments, one together with the submission of the application, and one with the receival of the notice of allowance.No renewal fees.','','','A short and concise description is needed.','A design patent application may only have a single claim.','Power of attorney, declaration of inventorship, information disclosure statement','','0','7 isometric reproductions are strongly advised. Also strongly advised is submitting drawn reproductions.','',1,1,1),(3,'CN',0,10,'Annual renewals','','0','',1,'Any component part of the product which cannot be partitioned or sold or used separately. Any product consisting of several component parts and the component part is not a product which has any value of independent use','',0,'Registration and annual renewal fees.','','Chinese examiners are sensitive to defects in design drawings which could delay or even prevent the granting of the patent. ','A very concise description is required.','','Power of attorney','','0','In case of a plane design, only front and back view are needed. In case of a three-dimensional design, the application must contain right, front, left, back, top and bottom view, as well as a space diagram.','',0,0,1);
+/*!40000 ALTER TABLE `design_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `migration`
 --
 
@@ -192,4 +239,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-08 23:56:43
+-- Dump completed on 2017-12-10  0:54:29

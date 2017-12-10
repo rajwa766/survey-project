@@ -10,7 +10,7 @@ body {
     padding: 0 0 60px;
 }
 
-.wrap > .container {
+.wrap > .container,.wrap > .container-fluid {
     padding: 70px 15px 20px;
 }
 
@@ -154,7 +154,7 @@ a.desc:after {
 	width: 30px;
 	height: 30px;
 	border-radius: 4px;
-	background: #333;
+	background: #73b680;
 	text-align: center;
 	left: 0;
 	top: 2px;
@@ -181,11 +181,40 @@ a.desc:after {
 	transition: all .3s ease;
 }
 .display{
-    /* display: none; */
+     display: none !important; 
+}
+.myClass{
+    display: block !important; 
 }
 .big-checkbox:checked + .checkbox-1:after {
 	transform: scale(1);
 }
 .big-checkboxs:checked + .checkbox-1:after {
 	transform: scale(1);
+}
+.modal-content{
+    background: #eee;
+}
+.create-buttons{
+    text-align: center;
+    margin: 30px;
+}
+.wrap .navbar-inverse {
+    background-color: #73b680;
+    border-color: #73b680;
+}
+.wrap .navbar-inverse .navbar-brand{
+color: #fff;
+}
+ .navbar li  a{
+    color: #fff !important;
+}
+.navbar li .btn-link{
+    color: #fff;
+}
+@media (min-width: 992px)
+{
+.modal-lg {
+    width: 1000px;
+}
 }

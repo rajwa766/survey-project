@@ -1,5 +1,7 @@
 <?php
-
+use yii\bootstrap\Modal;
+use yii\helpers\Url;
+use yii\helpers\Html;
 /* @var $this yii\web\View */
 
 //$this->title = 'My Yii Application';
@@ -9,6 +11,17 @@
 <h2 style="text-align:center;margin-bottom: 20px;margin-top: 70px;">Country Choice</h2>
     
 <div class="row">
+<?php
+        Modal::begin([
+
+            'id' => 'modal',
+            'size' => 'modal-lg',
+        ]);
+
+        echo '<div id="modalContent"></div>';
+
+        Modal::end();
+        ?>
 <?php foreach($data as $data){ ?>
 
 <div class="col-md-3">
@@ -20,6 +33,11 @@
 </div>
 <?php } ?>
 </div>
+<?php if (!Yii::$app->user->isGuest) {?>
+<p class="create-buttons">
+<?= Html::button(Yii::t('app', 'Create Country'), ['value' => Url::to('@web/design-info/create'), 'class' => 'btn btn-success click_modal']) ?>
+                </p>
+<?php }?>
 <h2 style="text-align:center;margin-bottom: 20px;">Choose information</h2>
 <div class="row">
 <div class="col-md-3">
@@ -138,24 +156,24 @@
 <table class="table table-striped table-bordered" style="margin-top:20px">
                                     <thead>
                                         <tr>
-                                                <th>Country</th>
-                                                <th>Hague</th>
-                                                <th>maxterm</th>
-                                                <th>renewals</th>
-                                                <th>grace</th>
-                                                <th>max_no</th>
-                                                <th>what</th>
-                                                <th>Subst_exam</th>
-                                                <th>fees</th>
-                                                <th>misc</th>
-                                                <th>description</th>
-                                                <th>claim</th>
-                                                <th>req_docs</th>
-                                                <th>deferment_period</th>
-                                                <th>reprod</th>
-                                                <th>dashed</th>
-                                                <th>shading</th>
-                                                <th>sections</th>
+                                                <th class="">Country</th>
+                                                <th class="display hague">Hague</th>
+                                                <th class="display maxterm">maxterm</th>
+                                                <th class="display renewals">renewals</th>
+                                                <th class="display grace">grace</th>
+                                                <th class="display max_no">max_no</th>
+                                                <th class="display what">what</th>
+                                                <th class="display Subst_exam">Subst_exam</th>
+                                                <th class="display fees">fees</th>
+                                                <th class="display misc">misc</th>
+                                                <th class="display description">description</th>
+                                                <th class="display claim">claim</th>
+                                                <th class="display req_docs">req_docs</th>
+                                                <th class="display deferment_period">deferment_period</th>
+                                                <th class="display reprod">reprod</th>
+                                                <th class="display dashed">dashed</th>
+                                                <th class="display shading">shading</th>
+                                                <th class="display sections">sections</th>
                                                 
                                                 
                                                 
@@ -175,7 +193,12 @@
     $(document).ready(function() {
 
 
- 
+        $("body").delegate(".click_modal","click",function(){
+       debugger;
+    $('#modal').modal('show').find('#modalContent').load($(this).attr('value'));
+    return false;
+    
+ });
     /**********customer modal*** */
      $("body").delegate(".big-checkbox","click",function(){
 		 var id =    $(this).attr('id');
@@ -195,7 +218,11 @@
                 }
             });
      });
-
+     $("body").delegate(".big-checkboxs","click",function(){
+         var id = $(this).attr('id');
+$("."+id).removeClass('display');;
+     });     
+    
         // $("body").delegate("#hague","click",function(){
         // debugger;
         // $(".country").css("display : block;");

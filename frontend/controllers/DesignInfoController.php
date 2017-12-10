@@ -69,10 +69,17 @@ class DesignInfoController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        if(Yii::$app->request->isAjax){
+            return $this->renderAjax('create', [
+                'model' => $model,
+            ]);
+            }else{
+                return $this->render('create', [
+                    'model' => $model,
+                ]);
+    
+            }
+     
     }
 
     /**

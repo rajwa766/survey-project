@@ -12,7 +12,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
-
+use yii\db\Query;
 /**
  * Site controller
  */
@@ -78,7 +78,7 @@ class SiteController extends Controller
     public function actionCountryDetail()
     {
         $data = \common\models\DesignInfo::find()->all();
-        return $this->render('index',['data'=>$data]);
+        return $this->render('countries',['data'=>$data]);
     }
     /**
      * Logs in a user.
@@ -103,6 +103,40 @@ class SiteController extends Controller
         }
     }
 
+    public function actionAjax() {
+       
+        $id = $_POST['id'];
+        $country  = (new Query())
+        ->select('*')
+        ->from('design_info')
+        ->where(['=', 'id', $id])
+        ->one();
+       
+        $model_vehicle = ''; 
+            $model_vehicle.='    <tr>
+            <td>'.$country['country'].'</td>
+            <td>'.$country['hague'].'</td>
+            <td>'.$country['maxterm'].'</td>
+            <td>'.$country['renewals'].'</td>
+            <td>'.$country['grace'].'</td>
+            <td>'.$country['max_no'].'</td>
+            <td>'.$country['what'].'</td>
+            <td>'.$country['subst_exam'].'</td>
+            <td>'.$country['fees'].'</td>
+            <td>'.$country['misc'].'</td>
+            <td>'.$country['description'].'</td>
+            <td>'.$country['claim'].'</td>
+            <td>'.$country['req_docs'].'</td>
+            <td>'.$country['deferment_period'].'</td>
+            <td>'.$country['reprod'].'</td>
+            <td>'.$country['dashed'].'</td>
+            <td>'.$country['shading'].'</td>
+            <td>'.$country['sections'].'</td>
+                  
+    </tr>'
+  ;
+  return $model_vehicle;
+}
     /**
      * Logs out the current user.
      *

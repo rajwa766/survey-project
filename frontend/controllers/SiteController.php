@@ -66,7 +66,7 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays homepage.
+     * display s homepage.
      *
      * @return mixed
      */
@@ -114,24 +114,24 @@ class SiteController extends Controller
        
         $model_vehicle = ''; 
             $model_vehicle.='    <tr>
-            <td>'.$country['country'].'</td>
-            <td>'.$country['hague'].'</td>
-            <td>'.$country['maxterm'].'</td>
-            <td>'.$country['renewals'].'</td>
-            <td>'.$country['grace'].'</td>
-            <td>'.$country['max_no'].'</td>
-            <td>'.$country['what'].'</td>
-            <td>'.$country['subst_exam'].'</td>
-            <td>'.$country['fees'].'</td>
-            <td>'.$country['misc'].'</td>
-            <td>'.$country['description'].'</td>
-            <td>'.$country['claim'].'</td>
-            <td>'.$country['req_docs'].'</td>
-            <td>'.$country['deferment_period'].'</td>
-            <td>'.$country['reprod'].'</td>
-            <td>'.$country['dashed'].'</td>
-            <td>'.$country['shading'].'</td>
-            <td>'.$country['sections'].'</td>
+            <td><div class="display  country">'.$country['country'].'</div></td>
+            <td><div class="display  hague">'.$country['hague'].'</div></td>
+            <td><div class="display  maxterm">'.$country['maxterm'].'</div></td>
+            <td><div class="display renewals">'.$country['renewals'].'</div></td>
+            <td><div class="display grace">'.$country['grace'].'</div></td>
+            <td><div class="display max_no">'.$country['max_no'].'</div></td>
+            <td><div class="display what">'.$country['what'].'</div></td>
+            <td><div class="display subst_exam">'.$country['subst_exam'].'</div></td>
+            <td><div class="display fees">'.$country['fees'].'</div></td>
+            <td><div class="display misc">'.$country['misc'].'</div></td>
+            <td><div class="display description">'.$country['description'].'</div></td>
+            <td><div class="display claim">'.$country['claim'].'</div></td>
+            <td><div class="display req_docs">'.$country['req_docs'].'</div></td>
+            <td><div class="display deferment_period">'.$country['deferment_period'].'</div></td>
+            <td><div class="display reprod">'.$country['reprod'].'</div></td>
+            <td><div class="display dashed">'.$country['dashed'].'</div></td>
+            <td><div class="display shading">'.$country['shading'].'</div></td>
+            <td><div class="display sections">'.$country['sections'].'</div></td>
                   
     </tr>'
   ;
@@ -150,7 +150,7 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays contact page.
+     * display s contact page.
      *
      * @return mixed
      */
@@ -173,7 +173,7 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays about page.
+     * display s about page.
      *
      * @return mixed
      */

@@ -13,7 +13,7 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
     <div class="row">
  <div class="col-md-6">
-    <?= $form->field($model, 'country')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'country')->textInput(['maxlength' => true,'placeholder' => "New Country"]) ?>
    </div>
    <div class="col-md-6">
     <?= $form->field($model, 'hague')->textInput() ?>
@@ -29,7 +29,7 @@ use yii\widgets\ActiveForm;
    </div>
    <div class="row">
  <div class="col-md-6">
-    <?= $form->field($model, 'renewals_details')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'renewals_details')->textarea(['rows' => 1]) ?>
    </div>
    <div class="col-md-6">
     <?= $form->field($model, 'grace')->textInput(['maxlength' => true]) ?>
@@ -37,7 +37,7 @@ use yii\widgets\ActiveForm;
    </div>
    <div class="row">
  <div class="col-md-6">
-    <?= $form->field($model, 'grace_details')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'grace_details')->textarea(['rows' => 1]) ?>
    </div>
    <div class="col-md-6">
     <?= $form->field($model, 'max_no')->textInput() ?>
@@ -48,7 +48,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'what')->textInput(['maxlength' => true]) ?>
    </div>
    <div class="col-md-6">
-    <?= $form->field($model, 'what_details')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'what_details')->textarea(['rows' => 1]) ?>
    </div>
    </div>
    <div class="row">
@@ -57,7 +57,7 @@ use yii\widgets\ActiveForm;
      
    </div>
    <div class="col-md-6">
-    <?= $form->field($model, 'fees')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'fees')->textarea(['rows' => 1]) ?>
    </div>
    </div>
    <div class="row">
@@ -65,7 +65,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'misc')->textInput(['maxlength' => true]) ?>
    </div>
    <div class="col-md-6">
-    <?= $form->field($model, 'misc_details')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'misc_details')->textarea(['rows' => 1]) ?>
    </div>
    </div>
    <div class="row">
@@ -81,7 +81,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'req_docs')->textInput(['maxlength' => true]) ?>
    </div>
    <div class="col-md-6">
-    <?= $form->field($model, 'req_docs_details')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'req_docs_details')->textarea(['rows' => 1]) ?>
    </div>
    </div>
 
@@ -96,7 +96,7 @@ use yii\widgets\ActiveForm;
 
    <div class="row">
  <div class="col-md-6">
-    <?= $form->field($model, 'reprod_details')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'reprod_details')->textarea(['rows' => 1]) ?>
    </div>
    <div class="col-md-6">
     <?= $form->field($model, 'dashed')->textInput() ?>

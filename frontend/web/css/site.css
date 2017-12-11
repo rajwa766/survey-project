@@ -1,6 +1,7 @@
 html,
 body {
     height: 100%;
+    font-family: Arial, sans-serif !important;
 }
 
 .wrap {
@@ -143,9 +144,9 @@ a.desc:after {
 	position: relative;
 	padding-left: 40px;
 	padding-top: 5px;
-	font-weight: 800;
+	font-weight: 400;
 	text-transform: uppercase;
-	font-size: 20px;
+	font-size: 12px;
 }
 
 .checkbox-1:before {
@@ -154,7 +155,7 @@ a.desc:after {
 	width: 30px;
 	height: 30px;
 	border-radius: 4px;
-	background: #73b680;
+	background: #0070ad;
 	text-align: center;
 	left: 0;
 	top: 2px;
@@ -199,19 +200,8 @@ a.desc:after {
     text-align: center;
     margin: 30px;
 }
-.wrap .navbar-inverse {
-    background-color: #73b680;
-    border-color: #73b680;
-}
-.wrap .navbar-inverse .navbar-brand{
-color: #fff;
-}
- .navbar li  a{
-    color: #fff !important;
-}
-.navbar li .btn-link{
-    color: #fff;
-}
+
+
 @media (min-width: 992px)
 {
 .modal-lg {

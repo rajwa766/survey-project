@@ -28,27 +28,36 @@ AppAsset::register($this);
 
 <div class="wrap">
     <?php
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
+    NavBar::begin([]);
+    ?>
+
+    <img src="http://localhost:8080/survey-project/frontend/web/assets/img/logo.png">
+     <?php
     $user_id = Yii::$app->user->getId();
     $Role =   Yii::$app->authManager->getRolesByUser($user_id);
     if(isset($Role['super_admin'])){
        $menuItems = [
            ['label' => 'Home', 'url' => ['/site/index']],
-           ['label' => 'Roles', 'url' => ['/admin']],
-           ['label' => 'Design Info', 'url' => ['/design-info/index']],
+           //['label' => 'Roles', 'url' => ['/admin']],
+           //['label' => 'Design Info', 'url' => ['/design-info/index']],
+           ['label' => 'Price Calculator', 'url' => ['/site/price-calculator']],
+           ['label' => 'Figure Info', 'url' => ['/site/figure-info']],
            ['label' => 'Country Details', 'url' => ['/site/country-detail']],
-         //  ['label' => 'Contact', 'url' => ['/site/contact']],
+           ['label' => 'About Guardian', 'url' => ['/site/about-guardian']],
+           ['label' => 'Why Design', 'url' => ['/site/why-design']],
+           ['label' => 'Strategy', 'url' => ['/site/strategy']],
+          
        ];
    }else{
        $menuItems = [
            ['label' => 'Home', 'url' => ['/site/index']],
-           ['label' => 'Country Details', 'url' => ['/site/country-detail']],
+          
+           ['label' => 'Price Calculator', 'url' => ['/site/price-calculator']],
+           ['label' => 'Figure Info', 'url' => ['/site/figure-info']],
+          ['label' => 'Country Details', 'url' => ['/site/country-detail']],
+          ['label' => 'About Guardian', 'url' => ['/site/about-guardian']],
+           ['label' => 'Why Design', 'url' => ['/site/why-design']],
+           ['label' => 'Strategy', 'url' => ['/site/strategy']],
           // ['label' => 'Roles', 'url' => ['/admin']],
          //  ['label' => 'Contact', 'url' => ['/site/contact']],
        ];
@@ -74,7 +83,7 @@ AppAsset::register($this);
     NavBar::end();
     ?>
 
-    <div class="container-fluid">
+    <div class="container">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
@@ -87,7 +96,7 @@ AppAsset::register($this);
     <div class="container">
         <p class="pull-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-right">Powered By: <a href="http://www.thecodeflex.com/">TheCodeFlex</a></p>
     </div>
 </footer>
 

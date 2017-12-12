@@ -1,8 +1,9 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+use kartik\grid\GridView;
 use yii\widgets\Pjax;
+use yii\helpers\Json;
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\DesignInfoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -13,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="design-info-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php Pjax::begin(); ?>
+ 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
@@ -23,10 +24,15 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'pjax'=>true,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
+            [
+        'class'=>'kartik\grid\EditableColumn',
+        'attribute'=>'country',
+            ],
             'country',
             'hague',
             'maxterm',
@@ -55,5 +61,5 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
-    <?php Pjax::end(); ?>
+  
 </div>

@@ -49,7 +49,7 @@ class DesignInfo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['country', 'hague', 'maxterm', 'renewals', 'renewals_details', 'grace', 'grace_details', 'max_no', 'what', 'what_details', 'subst_exam', 'fees', 'misc', 'misc_details', 'description', 'claim', 'req_docs', 'req_docs_details', 'deferment_period', 'reprod', 'reprod_details', 'dashed', 'shading', 'sections'], 'required'],
+            [['country'], 'required'],
             [['hague', 'maxterm', 'max_no', 'subst_exam', 'dashed', 'shading', 'sections'], 'integer'],
             [['renewals_details', 'grace_details', 'what_details', 'fees', 'misc_details', 'req_docs_details', 'reprod_details'], 'string'],
             [['country', 'renewals', 'grace', 'what', 'misc', 'description', 'claim', 'req_docs', 'deferment_period', 'reprod'], 'string', 'max' => 255],

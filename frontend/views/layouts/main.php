@@ -31,7 +31,7 @@ AppAsset::register($this);
     NavBar::begin([]);
     ?>
 
-    <img src="http://localhost:8080/survey-project/frontend/web/assets/img/logo.png">
+    <img src="<?= \yii\helpers\Url::to('@web/img/logo.png', true) ?>">
      <?php
     $user_id = Yii::$app->user->getId();
     $Role =   Yii::$app->authManager->getRolesByUser($user_id);

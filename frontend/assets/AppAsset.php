@@ -14,6 +14,7 @@ class AppAsset extends AssetBundle
     public $css = [
         'css/style.css',
         'css/site.css',
+        '//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css',
     ];
     public $js = [
         'js/custom.js',

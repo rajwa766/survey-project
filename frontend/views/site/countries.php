@@ -31,8 +31,9 @@ $this->params['breadcrumbs'][] = $this->title;
 <input class="big-checkbox" type="checkbox" id="<?= $data->id; ?>">
 		<label for="<?= $data->id; ?>" class="checkbox-1">
 		<?= $data->country; ?>
-		</label>
-
+        </label>
+        <br>
+        <button type="button" class="btn btn-dark" style="margin-top: 15px;margin-bottom: 15px;"><a target="_blank" href="<?= Yii::$app->homeUrl; ?>/design-info/view?id=<?php echo $data->id; ?>">More Info</a></button>
 </div>
 <?php } ?>
 </div>

@@ -8,6 +8,7 @@ use common\models\DesignInfoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\Json;
 
 /**
  * DesignInfoController implements the CRUD actions for DesignInfo model.
@@ -35,9 +36,28 @@ class DesignInfoController extends Controller
      */
     public function actionIndex()
     {
+       // $model = new DesignInfo();
         $searchModel = new DesignInfoSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+  
+        if(Yii::$app->request->post('hasEditable')){
+    $country = Yii::$app->request->post('editableKey');
+    $country_name = DesignInfo::findOne($country);
+   
+    $out = Json::encode(['output'=>'','message'=>'']);
+    $post = [];
+    $posted = current($_POST['DesignInfo']);
+    $post['DesignInfo'] = $posted;
 
+  
+    if($country_name->load($post)){
+     
+       $country_name->save();
+    }
+    echo $out;
+    return;
+
+}
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -52,6 +72,23 @@ class DesignInfoController extends Controller
      */
     public function actionView($id)
     {
+        $model = new  DesignInfo();
+        if(Yii::$app->request->post('hasEditable')){
+            $country = $_GET['id'];
+            $model = DesignInfo::findOne($country);
+            $out = Json::encode(['output'=>'','message'=>'']);
+            $post = [];
+            $posted = $_POST['DesignInfo'];
+            if($model->load($posted)){
+                
+                  $model->save();
+               }
+         
+          
+            echo $out;
+            return;
+        
+        }
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -81,7 +118,33 @@ class DesignInfoController extends Controller
             }
      
     }
-
+    public function actionEditableDemo() {
+        $model = new DesignInfo(); // your model can be loaded here
+        // Check if there is an Editable ajax request
+        if (isset($_POST['hasEditable'])) {
+            // use Yii's response format to encode output as JSON
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            
+            // read your posted model attributes
+            if ($model->load($_POST)) {
+                // read or convert your posted information
+                $value = $model->name;
+                
+                // return JSON encoded output in the below format
+                return ['output'=>$value, 'message'=>''];
+                
+                // alternatively you can return a validation error
+                // return ['output'=>'', 'message'=>'Validation error'];
+            }
+            // else if nothing to do always return an empty JSON encoded output
+            else {
+                return ['output'=>'', 'message'=>''];
+            }
+        }
+        
+        // Else return to rendering a normal view
+        return $this->render('view', ['model'=>$model]);
+    }
     /**
      * Updates an existing DesignInfo model.
      * If update is successful, the browser will be redirected to the 'view' page.

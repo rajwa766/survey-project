@@ -113,7 +113,7 @@ class SiteController extends Controller
         ->one();
        
         $model_vehicle = ''; 
-            $model_vehicle.='    <tr>
+            $model_vehicle.='    <tr class="country_'.$country['id'].'">
             <td  class="">'.$country['country'].' </td>
             <td  class="display  hague">'.$country['hague'].' </td>
             <td  class="display  maxterm">'.$country['maxterm'].' </td>
@@ -123,7 +123,7 @@ class SiteController extends Controller
             <td  class="display what">'.$country['what'].' </td>
             <td  class="display subst_exam">'.$country['subst_exam'].' </td>
             <td  class="display fees">'.$country['fees'].' </td>
-            <td  class="display misc">'.$country['misc'].' </td>
+         
             <td  class="display description">'.$country['description'].' </td>
             <td  class="display claim">'.$country['claim'].' </td>
             <td  class="display req_docs">'.$country['req_docs'].' </td>
@@ -206,6 +206,7 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+  
 
     /**
      * Requests password reset.

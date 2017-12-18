@@ -27,8 +27,8 @@ $this->params['breadcrumbs'][] = $this->title;
         ?>
 <?php foreach($data as $data){ ?>
 
-<div class="col-md-2">
-<input class="big-checkbox" type="checkbox" id="<?= $data->id; ?>">
+<div class="col-md-4">
+<input class="big-checkbox " type="checkbox" id="<?= $data->id; ?>">
 		<label for="<?= $data->id; ?>" class="checkbox-1">
 		<?= $data->country; ?>
         </label>
@@ -38,134 +38,141 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php } ?>
 </div>
 <br/>
-<?php if (!Yii::$app->user->isGuest) {?>
+<?php
+$user_id = Yii::$app->user->getId();
+    $Role =   Yii::$app->authManager->getRolesByUser($user_id);
+    if(isset($Role['super_admin'])){
+?>
 <p class="">
 <?= Html::button(Yii::t('app', 'Add Country'), ['value' => Url::to('@web/design-info/create'), 'class' => 'country-btn btn btn-primery click_modal']) ?>
                 </p>
 <?php }?>
 <strong>Choose information</strong>
 <div class="row options">
-<div class="col-md-2">
-<input class="big-checkboxs" type="checkbox" id="hague">
-		<label for="hague" class="checkbox-1">
-		hague
-		</label>
-
+    <div class="col-md-12 heading_text">
+<input class="big-checkboxs" type="checkbox" id="general">
+    <label for="general" class="checkbox-1">
+		General Information
+</label>
 </div>
-<div class="col-md-2">
-<input class="big-checkboxs" type="checkbox" id="maxterm">
+<div class="col-md-4">
+<input class="big-checkboxs general" type="checkbox" id="hague">
+<label for="hague" class="checkbox-1">
+Hague member 
+		
+	
+</label>
+</div>
+<div class="col-md-4">
+<input class="big-checkboxs general" type="checkbox" id="maxterm">
 		<label for="maxterm" class="checkbox-1">
-		maxterm
+		Max term 
 		</label>
 
 </div>
-<div class="col-md-2">
-<input class="big-checkboxs" type="checkbox" id="renewals">
-		<label for="renewals" class="checkbox-1">
-		renewals
-		</label>
 
-</div>
-<div class="col-md-2">
-<input class="big-checkboxs" type="checkbox" id="hague">
-		<label for="hague" class="checkbox-1">
-		hague
-		</label>
-
-</div>
-<div class="col-md-2">
-<input class="big-checkboxs" type="checkbox" id="grace">
+<div class="col-md-4">
+<input class="big-checkboxs general" type="checkbox" id="grace">
 		<label for="grace" class="checkbox-1">
-        grace
+        Grace period
 		</label>
 </div>
-</div>
-<div class="row options">
-<div class="col-md-2">
-<input class="big-checkboxs" type="checkbox" id="max_no">
-		<label for="max_no" class="checkbox-1">
-        max no
-		</label>
-</div>
-<div class="col-md-2">
-<input class="big-checkboxs" type="checkbox" id="what">
+<div class="col-md-4">
+<input class="big-checkboxs general" type="checkbox" id="what">
 		<label for="what" class="checkbox-1">
-        what
+        What can be registered 
 		</label>
 </div>
-<div class="col-md-2">
-<input class="big-checkboxs" type="checkbox" id="subst_exam">
-		<label for="subst_exam" class="checkbox-1">
-        subst exam
-		</label>
-</div>
-<div class="col-md-2">
-<input class="big-checkboxs" type="checkbox" id="fees">
+<div class="col-md-4">
+<input class="big-checkboxs general" type="checkbox" id="fees">
 		<label for="fees" class="checkbox-1">
-        fees
+        Fees
 		</label>
 </div>
-<div class="col-md-2">
-<input class="big-checkboxs" type="checkbox" id="misc">
-        <label for="misc" class="checkbox-1">
-        misc
-        </label>
-</div>
-</div>
-<div class="row options">
+<div class="col-md-4">
+<input class="big-checkboxs general" type="checkbox" id="renewals">
+		<label for="renewals" class="checkbox-1">
+        Renewals 
+		</label>
 
-<div class="col-md-2">
-<input class="big-checkboxs" type="checkbox" id="description">
+</div>
+<div class="col-md-12 heading_text">
+<input class="big-checkboxs" type="checkbox" id="application">
+    <label for="application" class="checkbox-1">
+  Application requirements
+</label>
+</div>
+
+
+<div class="col-md-4">
+<input class="big-checkboxs application" type="checkbox" id="max_no">
+		<label for="max_no" class="checkbox-1">
+        Max. no. of designs 
+		</label>
+</div>
+<div class="col-md-4">
+<input class="big-checkboxs application" type="checkbox" id="description">
 		<label for="description" class="checkbox-1">
-        description
+        Description 
 		</label>
 </div>
-<div class="col-md-2">
-<input class="big-checkboxs" type="checkbox" id="claim">
+<div class="col-md-4">
+<input class="big-checkboxs application" type="checkbox" id="claim">
 		<label for="claim" class="checkbox-1">
-        claim
+        Claim 
 		</label>
 </div>
-<div class="col-md-2">
-<input class="big-checkboxs" type="checkbox" id="req_docs">
+<div class="col-md-4">
+<input class="big-checkboxs application" type="checkbox" id="subst_exam">
+		<label for="subst_exam" class="checkbox-1">
+        Substantial exam
+		</label>
+</div>
+<div class="col-md-4">
+<input class="big-checkboxs application" type="checkbox" id="req_docs">
 		<label for="req_docs" class="checkbox-1">
-        req docs
+        Req. docs 
 		</label>
 </div>
-<div class="col-md-2">
-<input class="big-checkboxs" type="checkbox" id="deferment_period">
+
+<div class="col-md-4">
+<input class="big-checkboxs application" type="checkbox" id="deferment_period">
 		<label for="deferment_period" class="checkbox-1">
-        deferment period
+        Deferment period 
 		</label>
 </div>
-<div class="col-md-2">
-<input class="big-checkboxs" type="checkbox" id="reprod">
-        <label for="reprod" class="checkbox-1">
-        reprod
-        </label>
-</div>
-</div>
-<div class="row options">
 
-<div class="col-md-2">
-<input class="big-checkboxs" type="checkbox" id="dashed">
+<div class="col-md-12 heading_text">
+<input class="big-checkboxs" type="checkbox" id="reproduction">
+    <label for="reproduction" class="checkbox-1">
+    Reproduction requirements: 
+</label>
+</div>
+<div class="col-md-4">
+<input class="big-checkboxs reproduction" type="checkbox" id="dashed">
 		<label for="dashed" class="checkbox-1">
-        dashed
+        Dashed lines 
 		</label>
 </div>
-<div class="col-md-2">
-<input class="big-checkboxs" type="checkbox" id="shading">
+<div class="col-md-4">
+<input class="big-checkboxs reproduction" type="checkbox" id="shading">
 		<label for="shading" class="checkbox-1">
-        shading
-		</label>
-</div>
-<div class="col-md-2">
-<input class="big-checkboxs" type="checkbox" id="sections">
-		<label for="sections" class="checkbox-1">
-        sections
+        Shading 
 		</label>
 </div>
 
+<div class="col-md-4">
+<input class="big-checkboxs reproduction" type="checkbox" id="sections">
+		<label for="sections" class="checkbox-1">
+        Sections allowed 
+		</label>
+</div>
+
+<div class="col-md-4">
+<input class="big-checkboxs reproduction" type="checkbox" id="reprod">
+        <label for="reprod" class="checkbox-1">
+        Figure notes 
+        </label>
 </div>
 <br/>
 <strong>Country Info</strong>
@@ -206,19 +213,29 @@ $this->params['breadcrumbs'][] = $this->title;
 
 </div>
 <script>
+     var group = [];
+     var country = [];
     $(document).ready(function() {
 
 
         $("body").delegate(".click_modal","click",function(){
-       debugger;
+     
     $('#modal').modal('show').find('#modalContent').load($(this).attr('value'));
     return false;
     
  });
     /**********customer modal*** */
      $("body").delegate(".big-checkbox","click",function(){
-		 var id =    $(this).attr('id');
- 
+        var id =    $(this).attr('id');
+        var countryClass="country_"+id;
+        
+         if(this.checked){
+            if($("tr").hasClass(countryClass))
+            {
+                $("."+countryClass).show();
+                return;
+            }
+         country.push(id);
 	        $.ajax({
                 type: "POST",
                 data:  "id="+id,
@@ -226,17 +243,106 @@ $this->params['breadcrumbs'][] = $this->title;
                 url: "<?php echo Yii::$app->getUrlManager()->createUrl('site/ajax'); ?>",
                 success: function (test) {
                     $('.detail_single_country').append(test);
-                  
+                    
+                    if(group){
+                         
+                    jQuery.each( group, function( i, val ) {
+  $("."+val).removeClass('display');
+  // Will stop running after "three"
+//   alert(val);
+   return (val != 'fifty');
+});
+                    }
                   //  document.getElementById('ros').appendChild(tr);
                 },
                 error: function (exception) {
                     alert(exception);
                 }
             });
+         }
+         else{
+            
+            $(".country_"+id).hide();
+            country = jQuery.grep(country, function(value) {
+  return value != id;
+});
+         }
      });
+/**********for general */
+     $("body").delegate("#general","click",function(){
+        if(this.checked){
+        var ids = $(".general").map(function () {
+            $("."+this.id).removeClass('display');
+            $("#"+this.id).attr('checked', true);
+            group.push(this.id);
+          
+        return this.id;
+    }).get();  
+        }else{
+            var ids = $(".general").map(function () {
+                $("."+this.id).addClass('display');
+            $("#"+this.id).attr('checked', false);;
+            group.splice( $.inArray(this.id,group) ,1 );
+      
+        return this.id;
+    }).get();
+        }
+     });  
+     /*******for aplication */
+     $("body").delegate("#application","click",function(){
+        if(this.checked){
+        var ids = $(".application").map(function () {
+            $("."+this.id).removeClass('display');
+            $("#"+this.id).attr('checked', true);
+            group.push(this.id);
+          
+        return this.id;
+    }).get();  
+        }else{
+            var ids = $(".application").map(function () {
+                $("."+this.id).addClass('display');
+            $("#"+this.id).attr('checked', false);;
+            group.splice( $.inArray(this.id,group) ,1 );
+        return this.id;
+    }).get();
+        }
+     });  
+     /***************for reproduction */
+     $("body").delegate("#reproduction","click",function(){
+        if(this.checked){
+        var ids = $(".reproduction").map(function () {
+            $("."+this.id).removeClass('display');
+            $("#"+this.id).attr('checked', true);
+            group.push(this.id);
+          
+        return this.id;
+    }).get();  
+        }else{
+            var ids = $(".reproduction").map(function () {
+                $("."+this.id).addClass('display');
+            $("#"+this.id).attr('checked', false);;
+            group.splice( $.inArray(this.id,group) ,1 );
+        return this.id;
+    }).get();
+        }
+     });  
+     /*********for single check box */
      $("body").delegate(".big-checkboxs","click",function(){
-         var id = $(this).attr('id');
-$("."+id).removeClass('display');;
+        var id = $(this).attr('id');
+        if(this.checked){
+        group.push(id);
+$("."+id).removeClass('display');
+        
+        }else{
+$("."+id).addClass('display');
+            
+            group = jQuery.grep(group, function(value) {
+  return value != id;
+});
+        }
+        //  alert(group);
+
+
      });     
     
         // $("body").delegate("#hague","click",function(){

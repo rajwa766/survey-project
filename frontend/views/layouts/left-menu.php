@@ -29,30 +29,52 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
+     ]
+    );
+    ?>
+    <a href="index">
+    <img src="<?= \yii\helpers\Url::to('@web/img/logo.png', true) ?>">
+    </a>
+     <?php
     $user_id = Yii::$app->user->getId();
     $Role =   Yii::$app->authManager->getRolesByUser($user_id);
     if(isset($Role['super_admin'])){
        $menuItems = [
-           ['label' => 'Home', 'url' => ['/site/index']],
-           ['label' => 'Roles', 'url' => ['/admin']],
-           ['label' => 'Design Info', 'url' => ['/design-info/index']],
+        //    ['label' => 'Home', 'url' => ['/site/index']],
+           //['label' => 'Roles', 'url' => ['/admin']],
+           //['label' => 'Design Info', 'url' => ['/design-info/index']],
+           ['label' => 'About Guardian', 'url' => ['/site/about-guardian']],
+           ['label' => 'Why Design', 'url' => ['/site/why-design']],
+           ['label' => 'Price Calculator', 'url' => ['/site/price-calculator']],
            ['label' => 'Country Details', 'url' => ['/site/country-detail']],
+           ['label' => 'Strategy', 'url' => ['/site/strategy']],
+           ['label' => 'Figure Info', 'url' => ['/site/figure-info']],
+           ['label' => 'User', 'url' => ['/user/index']],
            
-         //  ['label' => 'Contact', 'url' => ['/site/contact']],
+          
+       ];
+   }elseif(Yii::$app->user->isGuest){
+       $menuItems = [
+        ['label' => 'About Guardian', 'url' => ['/site/about-guardian']],
+        ['label' => 'Why Design', 'url' => ['/site/why-design']],
+        ['label' => 'Price Calculator', 'url' => ['/site/price-calculator']],
+        // ['label' => 'Country Details', 'url' => ['/site/country-detail']],
+        // ['label' => 'Strategy', 'url' => ['/site/strategy']],
+        // ['label' => 'Figure Info', 'url' => ['/site/figure-info']],
+        ['label' => 'User', 'url' => ['/user/index']],
        ];
    }else{
-       $menuItems = [
-           ['label' => 'Home', 'url' => ['/site/index']],
-           ['label' => 'Country Details', 'url' => ['/site/country-detail']],
-          // ['label' => 'Roles', 'url' => ['/admin']],
-         //  ['label' => 'Contact', 'url' => ['/site/contact']],
-       ];
+    $menuItems = [
+        ['label' => 'About Guardian', 'url' => ['/site/about-guardian']],
+        ['label' => 'Why Design', 'url' => ['/site/why-design']],
+        ['label' => 'Price Calculator', 'url' => ['/site/price-calculator']],
+        ['label' => 'Country Details', 'url' => ['/site/country-detail']],
+        ['label' => 'Strategy', 'url' => ['/site/strategy']],
+        ['label' => 'Figure Info', 'url' => ['/site/figure-info']],
+        ['label' => 'User', 'url' => ['/user/index']],
+        
+       
+    ]; 
    }
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];

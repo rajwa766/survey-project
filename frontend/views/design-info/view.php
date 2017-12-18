@@ -15,8 +15,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="design-info-view">
 
-    
-    <?php if (!Yii::$app->user->isGuest) { ?>
+<?php
+$user_id = Yii::$app->user->getId();
+    $Role =   Yii::$app->authManager->getRolesByUser($user_id);
+    if(isset($Role['super_admin'])){
+?>
     <p>
         <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [

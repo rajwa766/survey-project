@@ -50,7 +50,7 @@ $user_id = Yii::$app->user->getId();
 <strong>Choose information</strong>
 <div class="row options">
     <div class="col-md-12 heading_text">
-<input class="big-checkboxs" type="checkbox" id="general">
+<input class="big-checkboxs general" type="checkbox" id="general">
     <label for="general" class="checkbox-1">
 		General Information
 </label>
@@ -179,16 +179,17 @@ Hague member
 <table class="table table-striped table-bordered" style="margin-top:20px">
                                     <thead>
                                         <tr>
-                                                <th class="">Country</th>
+                                                <th class="display country">Country</th>
                                                 <th class="display hague">Hague</th>
                                                 <th class="display maxterm">maxterm</th>
                                                 <th class="display renewals">renewals</th>
                                                 <th class="display grace">grace</th>
                                                 <th class="display max_no">max_no</th>
                                                 <th class="display what">what</th>
-                                                <th class="display Subst_exam">Subst_exam</th>
+                                                <th class="display subst_exam">
+                                                </th>
                                                 <th class="display fees">fees</th>
-                                                <th class="display misc">misc</th>
+                                               
                                                 <th class="display description">description</th>
                                                 <th class="display claim">claim</th>
                                                 <th class="display req_docs">req_docs</th>
@@ -215,6 +216,7 @@ Hague member
 <script>
      var group = [];
      var country = [];
+     var country_title = [];
     $(document).ready(function() {
 
 
@@ -230,9 +232,12 @@ Hague member
         var countryClass="country_"+id;
         
          if(this.checked){
+            country_title.push(id);
             if($("tr").hasClass(countryClass))
             {
                 $("."+countryClass).show();
+                $(".country").removeClass('display');
+                
                 return;
             }
          country.push(id);
@@ -243,7 +248,7 @@ Hague member
                 url: "<?php echo Yii::$app->getUrlManager()->createUrl('site/ajax'); ?>",
                 success: function (test) {
                     $('.detail_single_country').append(test);
-                    
+                    $(".country").removeClass('display');
                     if(group){
                          
                     jQuery.each( group, function( i, val ) {
@@ -261,11 +266,17 @@ Hague member
             });
          }
          else{
-            
             $(".country_"+id).hide();
             country = jQuery.grep(country, function(value) {
   return value != id;
 });
+country_title = jQuery.grep(country_title, function(value) {
+  return value != id;
+});
+if(country_title == ""){
+    $(".country").addClass('display');
+    
+}
          }
      });
 /**********for general */

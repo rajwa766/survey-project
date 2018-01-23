@@ -102,7 +102,15 @@ class SiteController extends Controller
             ]);
         }
     }
-
+    public function actionAjaxprices() {
+        $id = $_POST['id'];
+        $country_prices  = (new Query())
+        ->select('*')
+        ->from('design_prices')
+        ->where(['=', 'id', $id])
+        ->one();
+        return json_encode($country_prices);
+    }
     public function actionAjax() {
        
         $id = $_POST['id'];

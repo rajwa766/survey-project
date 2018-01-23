@@ -11,8 +11,21 @@ body {
     padding: 0 0 60px;
 }
 
-.wrap > .container,.wrap > .container-fluid {
-    padding: 70px 15px 20px;
+.wrap>.container,
+.wrap>.container-fluid {
+    padding: 10px 15px 5px;
+}
+
+.jsgrid-grid-body {
+    overflow-x: hidden !important;
+}
+
+jsgrid-insert-row,
+.vehicle-form .jsgrid-filter-row,
+.vehicle-form .jsgrid-edit-button,
+.jsgrid-search-mode-button,
+.jsgrid-insert-button {
+    display: none !important;
 }
 
 .footer {
@@ -37,8 +50,11 @@ body {
     font-style: italic;
 }
 
+
 /* add sorting icons to gridview sort links */
-a.asc:after, a.desc:after {
+
+a.asc:after,
+a.desc:after {
     position: relative;
     top: 1px;
     display: inline-block;
@@ -96,115 +112,127 @@ a.desc:after {
     margin: 0 0 15px 0;
 }
 
+
 /* align the logout "link" (button in form) of the navbar */
-.nav li > form > button.logout {
+
+.nav li>form>button.logout {
     padding: 15px;
     border: none;
 }
 
 @media(max-width:767px) {
-    .nav li > form > button.logout {
-        display:block;
+    .nav li>form>button.logout {
+        display: block;
         text-align: left;
         width: 100%;
         padding: 10px 15px;
     }
 }
 
-.nav > li > form > button.logout:focus,
-.nav > li > form > button.logout:hover {
+.nav>li>form>button.logout:focus,
+.nav>li>form>button.logout:hover {
     text-decoration: none;
 }
 
-.nav > li > form > button.logout:focus {
+.nav>li>form>button.logout:focus {
     outline: none;
 }
+
+
 /************country***/
+
+
 /* .big-checkbox  > input {
     width: 30px;
     height: 27px;
 } */
+
 .checkbox-1 {
-	cursor: pointer;
-	
-	position: relative;
-	padding-left: 40px;
-	padding-top: 5px;
-	font-weight: 800;
-	text-transform: uppercase;
-	font-size: 20px;
+    cursor: pointer;
+    position: relative;
+    padding-left: 40px;
+    padding-top: 5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 20px;
 }
-.big-checkbox ,.big-checkboxs{
-	display: none;
+
+.big-checkbox,
+.big-checkboxs {
+    display: none;
 }
 
 .checkbox-1 {
-	cursor: pointer;
-	
-	position: relative;
-	padding-left: 40px;
-	padding-top: 5px;
-	font-weight: 400;
-	text-transform: uppercase;
-	font-size: 12px;
+    cursor: pointer;
+    position: relative;
+    padding-left: 40px;
+    padding-top: 5px;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 12px;
 }
 
 .checkbox-1:before {
-	position: absolute;
-	content: '';
-	width: 30px;
-	height: 30px;
-	border-radius: 4px;
-	background: #0070ad;
-	text-align: center;
-	left: 0;
-	top: 2px;
-	
-	-webkit-transition: all .3s ease;
-	transition: all .3s ease;
+    position: absolute;
+    content: '';
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    background: #0070ad;
+    text-align: center;
+    left: 0;
+    top: 2px;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+}
+
+.big-checkbox_prices {
+    margin-bottom: 10px;
 }
 
 .checkbox-1:after {
-	position: absolute;
-	content: '✔';
-	font-family: 'Dosis', sans-serif;
-	font-size: 20px;
-	font-weight: 400;
-	line-height: 20px;
-	text-align: center;
-	color: #fff;
-	left: 7px;
-	top: 7px;
-	
-	transform: scale(0);
-	
-	-webkit-transition: all .3s ease;
-	transition: all .3s ease;
+    position: absolute;
+    content: '✔';
+    font-family: 'Dosis', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: center;
+    color: #fff;
+    left: 7px;
+    top: 7px;
+    transform: scale(0);
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
 }
-.display{
-     display: none !important; 
+
+.display {
+    display: none !important;
 }
-.myClass{
-    display: block !important; 
+
+.myClass {
+    display: block !important;
 }
-.big-checkbox:checked + .checkbox-1:after {
-	transform: scale(1);
+
+.big-checkbox:checked+.checkbox-1:after {
+    transform: scale(1);
 }
-.big-checkboxs:checked + .checkbox-1:after {
-	transform: scale(1);
+
+.big-checkboxs:checked+.checkbox-1:after {
+    transform: scale(1);
 }
-.modal-content{
+
+.modal-content {
     background: #eee;
 }
-.create-buttons{
+
+.create-buttons {
     text-align: center;
     margin: 30px;
 }
 
-
-@media (min-width: 992px)
-{
-.modal-lg {
-    width: 1000px;
-}
+@media (min-width: 992px) {
+    .modal-lg {
+        width: 1000px;
+    }
 }

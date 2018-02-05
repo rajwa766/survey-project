@@ -118,6 +118,56 @@ class DesignInfoController extends Controller
             }
      
     }
+    public function actionMail(){
+       $name = $_POST['name'];
+       $company = $_POST['company'];
+       $email = $_POST['email'];
+       if($_POST['meeting']){
+        $meeting = 'yes';
+       }else{
+        $meeting = 'yes'; 
+       }
+       $product = $_POST['product'];
+       if($_POST['design_published'] == '0'){
+$design_publisheed = 'Not published ';
+       }elseif($_POST['design_published'] == '1'){
+
+$design_publisheed = 'Published for less than 6 months ';
+
+    }elseif($_POST['design_published'] == '6'){
+$design_publisheed = 'Published for more than 6 months but less than 1 year 
+';
+       }
+      elseif($_POST['design_published'] == '12'){
+$design_publisheed = 'Published for more than 1 year  
+';
+      }
+      if($_POST['us_company'] == '11'){
+       $us_company = 'Big entity';
+    }elseif($_POST['us_company'] == '12'){
+        $us_company = 'Small entity ';
+    }else{
+        $us_company = 'Micro entity';
+    }
+    if($_POST['reporting'] == '1'){
+        $reporting = 'Simple reporting';
+    }else{
+        $reporting = 'Advanced reporting ';
+    }
+    $countries = $_POST['E'];
+    $all_countries = '';
+    foreach($countries as $country){
+        $all_countries.= $country.'';
+    }
+    Yii::$app->mail->compose('reserveProduct')
+    ->setFrom([Yii::$app->params['supportEmail'] => 'Malls Online' . ' Admin'])
+    ->setTo('rajwabarocho@gmail.com')
+    ->setSubject('Shop Approval application for mallsonline.com')
+    ->send();
+ 
+
+    return $this->render('mail_sended');
+}
     public function actionEditableDemo() {
         $model = new DesignInfo(); // your model can be loaded here
         // Check if there is an Editable ajax request

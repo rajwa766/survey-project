@@ -94,19 +94,19 @@ use yii\widgets\ActiveForm;
 		<a href="#" data-toggle="tooltip" data-placement="top" title="The type of company that you have will affect the cost of registration in the US."><i class="fa fa-question-circle" aria-hidden="true"></i></a>
 <div class="radio">
 		  <label>
-			<input checked="checked" type="radio" id="28"  name="us_company" class="us_entity" value="11">
+			<input checked="checked" type="radio"  name="us_company" class="us_entity" value="11">
 			Big entity 
 		  </label>
 		</div>
 		<div class="radio">
 		  <label>
-			<input type="radio"  name="us_company" id="29" class="us_entity" value="13">
+			<input type="radio"  name="us_company" class="us_entity" value="13">
 			Small entity 
 		  </label>
 		</div>
 		<div class="radio">
 		  <label>
-			<input type="radio"  name="us_company" id="30" class="us_entity" value="12">
+			<input type="radio"  name="us_company" class="us_entity" value="12">
 			Micro entity
 		  </label>
 		</div>
@@ -139,7 +139,6 @@ use yii\widgets\ActiveForm;
 
 </div>
 <div class="row">
-<div class="col-md-12">
 <span class="steps">Step 5</span>
 
 <label class="control-label">Please select the countries/region you are intrested in.</label>
@@ -150,7 +149,7 @@ use yii\widgets\ActiveForm;
 <?php
 $all_countries =  \common\models\DesignPrices::find()->all();
 foreach($all_countries as $all_country){
-	if($all_country->WIPO == '0' && $all_country->id != '28' && $all_country->id != '29' && $all_country->id != '30'){
+	if($all_country->WIPO == '0'){
 	?>
 <div class="col-md-2 big-checkbox_prices">
 <input class="big-checkbox <?= $all_country->Country; ?>" name="E[<?= $all_country->Country; ?>]" value="<?= $all_country->Country; ?>" type="checkbox" id="<?= $all_country->id; ?>">
@@ -170,9 +169,7 @@ foreach($all_countries as $all_country){
 ?>
 
 </div>
-</div>
 <div class="row">
-<div class="col-md-12">
 	<h3>
 <strong>WIPO</strong></h3>
 <?php
@@ -197,9 +194,7 @@ foreach($all_countries as $all_country){
 }
 ?>
 	</div>
-	</div>
 <div class="row">
-<div class="col-md-12">
 <table width="100%" class="kv-grid-table table table-bordered table-striped kv-table-wrap">
 <thead>
 <tr>
@@ -271,9 +266,6 @@ foreach($all_countries as $all_country){
 </div>
 
 <button class="btn btn-primary">Save</button>
-</div>
-
-
 <?php ActiveForm::end(); ?>
 <script>
 $(document).ready(function(){
@@ -290,10 +282,6 @@ $(document).ready(function(){
 				if(id == '27'){
 			
 				id =	$('input[name=us_company]:checked').val();
-				}
-				if(id == '31'){
-					id =	$('input[name=us_company]:checked').attr('id');
-					
 				}
 	
 				var multiplyBy=parseFloat($("#product").val());
@@ -366,6 +354,7 @@ $(document).ready(function(){
 				
          }
          else{
+			
 				  var period = $('input[name=design_published]:checked').val();
 				 if(period == '12'){
 					$(this).siblings().eq(1).children().eq(2).children().removeClass('display_flag');
@@ -398,19 +387,14 @@ if(wipo.length<2){
 	$('.wipo-WIPOBasicFee').remove();
 	wipo = [];
 }
-if(id == '28' || id == '29' || id == '30'){
-	
-	$('.national-USALargeEntity').remove();
-	$('.national-USAMicroEntity').remove();
-	$('.national-USASmallEntity').remove();
-}
 //remove USA 
 if(id == '11' || id == '12' || id == '13'){
-	$('.wipo-USALargeEntity').remove();
-	$('.wipo-USAMicroEntity').remove();
-	$('.wipo-USASmallEntity').remove();
+	$('.wipo-USAL').remove();
+	$('.wipo-USAM').remove();
+	$('.wipo-USAS').remove();
 
 }else{
+
 					var item=$(this).siblings()[0];
 					var country=$(item).html().replace(/\s+/g, '');
 					var isNational=$(this).parent().parent().find("h3").html().indexOf("National")>0;
@@ -455,17 +439,11 @@ wipo = [];
 		//  step 3 us check
 		 $("body").delegate(".us_entity","click",function(){
 			var id =	$('input[name=us_company]:checked').val();
-			var na_id =	$('input[name=us_company]:checked').attr('id');
-			
 			$("[class^=wipo-USA]").remove();
-$("[class^=national-USA]").remove();
-if($("#27").is(':checked')){
-	
-	Ajaxintity(id);
-}
-if($("#31").is(':checked')){
-	Ajaxintity(na_id);
-	
+
+if($(".USA").is(':checked')){
+
+	Ajax(id);
 }
 		 });
 		 //step 2
@@ -567,12 +545,7 @@ function ChangePrices()
 }
 
 function Ajaxonproductchange(id){
-	if(id == '27'){
-				id =	$('input[name=us_company]:checked').val();
-				}
-				if(id == '31'){
-					id =	$('input[name=us_company]:checked').attr('id');
-				}
+	
 	$.ajax({
                 type: "POST",
                 data:  "id="+id,
@@ -618,12 +591,6 @@ function Ajaxonproductchange(id){
 						});
 }
 function Ajax(id){
-	if(id == '27'){
-				id =	$('input[name=us_company]:checked').val();
-				}
-				if(id == '31'){
-					id =	$('input[name=us_company]:checked').attr('id');
-				}
 	$.ajax({
                 type: "POST",
                 data:  "id="+id,
@@ -650,52 +617,10 @@ function Ajax(id){
 							
 								}else{
 		   wipo.push(json.id);
+
 									$('.wipo_item > tr:nth-child(2)').before('<tr class="wipo-'+json.Country.replace(/\s+/g, '')+'"><td></td><td>'+json.Country+'</td><td class="wipo-sum">'+$price+'</td><td class="hidden-price" style="visibility:hidden" width="1%">'+$original_price+'</td><td class="hidden-price_formula" style="visibility:hidden" width="1%">'+$hidden_price+'</td></tr>');
 				 CalculateSum();
-								}
-				   },
-                error: function (exception) {
-                    alert(exception);
-                }
-						});
-}
-function Ajaxintity(id){
-	if(id == '27'){
-				id =	$('input[name=us_company]:checked').val();
-				}
-				if(id == '31'){
-					id =	$('input[name=us_company]:checked').attr('id');
-					
-				}
-	$.ajax({
-                type: "POST",
-                data:  "id="+id,
-                url: "<?php echo Yii::$app->getUrlManager()->createUrl('site/ajaxprices'); ?>",
-                success: function (test) {
-									$no_of_product = $('#product').val();
-									$no_of_product = 	parseFloat($no_of_product) - 1;
-									var radioValue = $("input[name='reporting']:checked"). val();
-									var json = $.parseJSON(test);
-									$original_price=0;
-										if(radioValue == '1'){
-									$original_price = parseFloat(json.OfficialFee1) + (parseFloat(json.OfficialFee2plus) * $no_of_product) + parseFloat(json.OurFeeSimple1) + (parseFloat(json.OurFeeSimple2plus) * $no_of_product)+ parseFloat(json.AgentFee1) + (parseFloat(json.AgentFee2plus) * $no_of_product);
-									$hidden_price = parseFloat(json.OfficialFee1) + (parseFloat(json.OfficialFee2plus) * $no_of_product) + parseFloat(json.OurFeeDetailed1) + (parseFloat(json.OurFeeDetailed2plus) * $no_of_product)+ parseFloat(json.AgentFee1) + (parseFloat(json.AgentFee2plus) * $no_of_product);
-									$price = $original_price;
-									}else{
-									$original_price = parseFloat(json.OfficialFee1) + (parseFloat(json.OfficialFee2plus) * $no_of_product) + parseFloat(json.OurFeeDetailed1) + (parseFloat(json.OurFeeDetailed2plus) * $no_of_product)+ parseFloat(json.AgentFee1) + (parseFloat(json.AgentFee2plus) * $no_of_product);
-									$hidden_price = parseFloat(json.OfficialFee1) + (parseFloat(json.OfficialFee2plus) * $no_of_product) + parseFloat(json.OurFeeSimple1) + (parseFloat(json.OurFeeSimple2plus) * $no_of_product)+ parseFloat(json.AgentFee1) + (parseFloat(json.AgentFee2plus) * $no_of_product);
-								$price = $original_price;
-									}
-								if(json.WIPO == '0'){
-									$('.national_item').append('<tr class="national-'+json.Country.replace(/\s+/g, '')+'"><td></td><td>'+json.Country+'</td><td class="national-sum">'+$price+'</td><td class="hidden-price" style="visibility:hidden" width="1%">'+$original_price+'</td><td class="hidden-price_formula" style="visibility:hidden" width="1%">'+$hidden_price+'</td></tr>');
-								//	CalculateSuminitial($price,wipo_sum,sum);
-				 CalculateSum();
 							
-								}else{
-		   wipo.push(json.id);
-		  					$('.wipo_item').append('<tr class="wipo-'+json.Country.replace(/\s+/g, '')+'"><td></td><td>'+json.Country+'</td><td class="wipo-sum">'+$price+'</td><td class="hidden-price" style="visibility:hidden" width="1%">'+$original_price+'</td><td class="hidden-price_formula" style="visibility:hidden" width="1%">'+$hidden_price+'</td></tr>');
-								
-										 CalculateSum();
 								}
 				   },
                 error: function (exception) {
